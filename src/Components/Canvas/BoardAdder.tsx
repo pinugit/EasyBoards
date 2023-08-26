@@ -1,9 +1,17 @@
 import { SiAddthis } from "react-icons/si";
 import "./BoardAdder.css";
 
-const BoardAdder = () => {
+interface props {
+  onBoardAdding: () => void;
+}
+
+const BoardAdder = ({ onBoardAdding }: props) => {
+  const handleBoardAdding = () => {
+    onBoardAdding();
+  };
+
   return (
-    <div className="container">
+    <div onClick={handleBoardAdding} className="container">
       <SiAddthis />
     </div>
   );
