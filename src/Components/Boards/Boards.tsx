@@ -1,6 +1,7 @@
 import { ChangeEvent, useState, useEffect, useRef } from "react";
 import Cards from "../Cards/Cards";
 import "./Boards.css";
+import CardAdder from "./CardAdder";
 
 const Boards = () => {
   const [isEditingHeading, setEditingHeading] = useState(true);
@@ -47,6 +48,7 @@ const Boards = () => {
         )}
       </div>
       <div className="card-area"></div>
+      <CardAdder />
     </div>
   );
 };
