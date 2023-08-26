@@ -1,4 +1,10 @@
-import { ChangeEvent, useState, useEffect, useRef, ReactElement } from "react";
+import React, {
+  ChangeEvent,
+  useState,
+  useEffect,
+  useRef,
+  ReactElement,
+} from "react";
 import Cards from "../Cards/Cards";
 import "./Boards.css";
 import CardAdder from "./CardAdder";
@@ -12,7 +18,10 @@ const Boards = () => {
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.select();
+    }
+    if (headingValue === "") {
+      setHeadingValue("untitled");
     }
   }, [isEditingHeading]);
 
@@ -26,9 +35,18 @@ const Boards = () => {
     }
   };
 
+  const handleSubmitWhenFocusLose = (
+    event: React.FocusEvent<HTMLInputElement>
+  ) => {
+    event.preventDefault();
+    setHeadingValue(event.target.value);
+    setEditingHeading(false);
+  };
+
   const handleAddingCard = () => {
     setCards((prev) => [...prev, <Cards key={Cards.length} />]);
   };
+
   return (
     <div className="board">
       <div className="heading-area">
@@ -39,6 +57,7 @@ const Boards = () => {
             value={headingValue}
             onChange={handleHeadingChange}
             onKeyDown={handleKeyPress}
+            onBlur={handleSubmitWhenFocusLose}
           />
         ) : (
           <h1
