@@ -5,6 +5,7 @@ const Boards = () => {
   return (
     <div className="board">
       <Cards />
+      <Cards />
     </div>
   );
 };
