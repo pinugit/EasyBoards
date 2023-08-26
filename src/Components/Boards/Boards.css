@@ -6,7 +6,6 @@
   padding: 1rem;
 
   width: 20rem;
-  min-height: auto;
 
   background: #3c3836;
 
@@ -15,12 +14,18 @@
 }
 
 .card-area {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
   background: #7c6f64;
 
   border-radius: 10px;
 
-  height: 1rem;
+  height: auto;
   width: auto;
+
+  padding: 5px;
 }
 
 .heading-area {

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect, useRef } from "react";
+import { ChangeEvent, useState, useEffect, useRef, ReactElement } from "react";
 import Cards from "../Cards/Cards";
 import "./Boards.css";
 import CardAdder from "./CardAdder";
@@ -6,6 +6,7 @@ import CardAdder from "./CardAdder";
 const Boards = () => {
   const [isEditingHeading, setEditingHeading] = useState(true);
   const [headingValue, setHeadingValue] = useState("");
+  const [cards, setCards] = useState<ReactElement[]>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,6 +26,9 @@ const Boards = () => {
     }
   };
 
+  const handleAddingCard = () => {
+    setCards((prev) => [...prev, <Cards key={Cards.length} />]);
+  };
   return (
     <div className="board">
       <div className="heading-area">
@@ -47,8 +51,8 @@ const Boards = () => {
           </h1>
         )}
       </div>
-      <div className="card-area"></div>
-      <CardAdder />
+      <div className="card-area">{cards.map((card) => card)}</div>
+      <CardAdder onAddingCard={handleAddingCard} />
     </div>
   );
 };
