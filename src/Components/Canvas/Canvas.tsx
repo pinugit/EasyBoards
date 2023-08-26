@@ -8,6 +8,7 @@ const Canvas = () => {
   const handleBoardAdding = () => {
     setBoards((prev) => [...prev, <Boards key={boards.length} />]);
   };
+
   return (
     <div id="Canvas">
       {boards.map((board) => board)}
