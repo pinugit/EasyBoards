@@ -5,12 +5,11 @@
 
   padding: 1rem;
 
-  width: 20rem;
+  width: 16rem;
   min-width: 10rem;
 
-  background: #3c3836;
+  background: #181a18;
 
-  border: #458588 2px solid;
   border-radius: 12px;
 }
 
@@ -59,7 +58,7 @@
   font-weight: 200;
 
   color: #458588;
-  background: #3c3836;
+  background: #181a18;
 
   padding: 2px;
 }
@@ -67,7 +66,7 @@
 .board-replacer {
   background: #458588;
 
-  width: 22rem;
+  width: 18rem;
 
   border-radius: 12px;
 }
