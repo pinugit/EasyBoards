@@ -11,3 +11,12 @@
 
   background: #282828;
 }
+
+.rows {
+  background: #1d2021;
+  padding: 1rem;
+
+  height: 100vh;
+
+  border-radius: 10px;
+}

@@ -17,6 +17,19 @@ const Boards = () => {
   const [isDragging, setDragging] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (isDragging) {
+      const boardElement = document.getElementById("board");
+      const replacerBoard = document.getElementById("rp");
+
+      if (boardElement && replacerBoard) {
+        const boardRect = boardElement.getBoundingClientRect();
+
+        replacerBoard.style.position = "absolute";
+        replacerBoard.style.height = `${boardRect.height}px`;
+      }
+    }
+  }, [isDragging]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -51,12 +64,18 @@ const Boards = () => {
 
   return (
     <>
+      {isDragging ? <div id="rp" className="board-replacer"></div> : null}
       <motion.div
         drag
         whileDrag={{
           scale: 1.1,
           rotate: -10,
         }}
+        onDragStart={() => setDragging(true)}
+        onDragEnd={() => setDragging(false)}
+        dragSnapToOrigin={true}
+        dragTransition={{ bounceDamping: 40, bounceStiffness: 600 }}
+        id="board"
         className="board"
       >
         <div className="heading-area">

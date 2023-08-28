@@ -11,7 +11,7 @@ const Canvas = () => {
 
   return (
     <div id="Canvas">
-      {boards.map((board) => board)}
+      <div className="rows">{boards.map((board) => board)}</div>
       <BoardAdder onBoardAdding={() => handleBoardAdding()} />
     </div>
   );

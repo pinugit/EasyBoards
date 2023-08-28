@@ -62,3 +62,11 @@
 
   padding: 2px;
 }
+
+.board-replacer {
+  background: #458588;
+
+  width: 22rem;
+
+  border-radius: 12px;
+}
