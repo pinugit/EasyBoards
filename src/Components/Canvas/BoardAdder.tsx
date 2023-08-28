@@ -1,4 +1,5 @@
 import { SiAddthis } from "react-icons/si";
+import { motion } from "framer-motion";
 import "./BoardAdder.css";
 
 interface props {
@@ -11,9 +12,16 @@ const BoardAdder = ({ onBoardAdding }: props) => {
   };
 
   return (
-    <div onClick={handleBoardAdding} className="container">
+    <motion.div
+      layout
+      transition={{
+        duration: 0.1,
+      }}
+      onClick={handleBoardAdding}
+      className="container"
+    >
       <SiAddthis />
-    </div>
+    </motion.div>
   );
 };
 

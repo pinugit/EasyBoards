@@ -64,7 +64,13 @@ const Boards = () => {
 
   return (
     <>
-      <div className="rows">
+      <motion.div
+        layout
+        initial={{ scale: "70%", opacity: "10%" }}
+        animate={{ scale: "100%", opacity: "100%" }}
+        transition={{ ease: "easeOut", duration: 0.2 }}
+        className="rows"
+      >
         {isDragging ? <div id="rp" className="board-replacer"></div> : null}
         <motion.div
           drag
@@ -103,7 +109,7 @@ const Boards = () => {
           <div className="card-area">{cards.map((card) => card)}</div>
           <CardAdder onAddingCard={handleAddingCard} />
         </motion.div>
-      </div>
+      </motion.div>
     </>
   );
 };
