@@ -1,6 +1,7 @@
 import "./Cards.css";
+import { motion } from "framer-motion";
 const Cards = () => {
-  return <div className="cards"></div>;
+  return <motion.div className="cards"></motion.div>;
 };
 
 export default Cards;
