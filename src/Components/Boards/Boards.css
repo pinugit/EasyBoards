@@ -70,3 +70,13 @@
 
   border-radius: 12px;
 }
+
+.rows {
+  background: #1d2021;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  height: 100vh;
+}

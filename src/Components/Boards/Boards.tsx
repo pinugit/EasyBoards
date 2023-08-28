@@ -64,44 +64,46 @@ const Boards = () => {
 
   return (
     <>
-      {isDragging ? <div id="rp" className="board-replacer"></div> : null}
-      <motion.div
-        drag
-        whileDrag={{
-          scale: 1.1,
-          rotate: -10,
-        }}
-        onDragStart={() => setDragging(true)}
-        onDragEnd={() => setDragging(false)}
-        dragSnapToOrigin={true}
-        dragTransition={{ bounceDamping: 40, bounceStiffness: 600 }}
-        id="board"
-        className="board"
-      >
-        <div className="heading-area">
-          {isEditingHeading ? (
-            <input
-              className="input"
-              ref={inputRef}
-              value={headingValue}
-              onChange={handleHeadingChange}
-              onKeyDown={handleKeyPress}
-              onBlur={handleSubmitWhenFocusLose}
-            />
-          ) : (
-            <h1
-              className="heading"
-              onDoubleClick={() => {
-                setEditingHeading(true);
-              }}
-            >
-              {headingValue}
-            </h1>
-          )}
-        </div>
-        <div className="card-area">{cards.map((card) => card)}</div>
-        <CardAdder onAddingCard={handleAddingCard} />
-      </motion.div>
+      <div className="rows">
+        {isDragging ? <div id="rp" className="board-replacer"></div> : null}
+        <motion.div
+          drag
+          whileDrag={{
+            scale: 1.1,
+            rotate: -10,
+          }}
+          onDragStart={() => setDragging(true)}
+          onDragEnd={() => setDragging(false)}
+          dragSnapToOrigin={true}
+          dragTransition={{ bounceDamping: 40, bounceStiffness: 600 }}
+          id="board"
+          className="board"
+        >
+          <div className="heading-area">
+            {isEditingHeading ? (
+              <input
+                className="input"
+                ref={inputRef}
+                value={headingValue}
+                onChange={handleHeadingChange}
+                onKeyDown={handleKeyPress}
+                onBlur={handleSubmitWhenFocusLose}
+              />
+            ) : (
+              <h1
+                className="heading"
+                onDoubleClick={() => {
+                  setEditingHeading(true);
+                }}
+              >
+                {headingValue}
+              </h1>
+            )}
+          </div>
+          <div className="card-area">{cards.map((card) => card)}</div>
+          <CardAdder onAddingCard={handleAddingCard} />
+        </motion.div>
+      </div>
     </>
   );
 };

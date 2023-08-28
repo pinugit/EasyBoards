@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import Boards from "../Boards/Boards";
 import BoardAdder from "./BoardAdder";
 import "./Canvas.css";
@@ -11,7 +11,7 @@ const Canvas = () => {
 
   return (
     <div id="Canvas">
-      <div className="rows">{boards.map((board) => board)}</div>
+      {boards.map((board) => board)}
       <BoardAdder onBoardAdding={() => handleBoardAdding()} />
     </div>
   );
