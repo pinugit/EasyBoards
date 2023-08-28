@@ -17,10 +17,11 @@ const BoardAdder = ({ onBoardAdding }: props) => {
       transition={{
         duration: 0.1,
       }}
+      whileHover={{ scale: 1.2 }}
       onClick={handleBoardAdding}
       className="container"
     >
-      <SiAddthis />
+      <SiAddthis className="icon" />
     </motion.div>
   );
 };

@@ -73,11 +73,15 @@
 }
 
 .rows {
-  background: #1d2021;
+  background: #001d2021;
 
   padding: 1rem;
 
   border-radius: 12px;
 
-  height: 100vh;
+  height: 100%;
+
+  backdrop-filter: blur(10px);
+
+  box-sizing: border-box;
 }

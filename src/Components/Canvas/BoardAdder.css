@@ -18,3 +18,9 @@
 .container:hover {
   background: #458588;
 }
+.icon {
+  background: #3c3836;
+}
+.icon:hover {
+  background: #458588;
+}

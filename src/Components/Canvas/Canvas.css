@@ -16,4 +16,7 @@
   box-sizing: border-box;
 
   background: #282828;
+  background-image: url("../../assets/ghibli-japanese-walled-garden.png");
+  background-size: cover;
+  opacity: 90%;
 }
