@@ -1,0 +1,11 @@
+.nevbar {
+  position: fixed;
+  width: 100vw;
+  height: 4rem;
+
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+
+  background: #001d2021;
+  backdrop-filter: blur(10px);
+}

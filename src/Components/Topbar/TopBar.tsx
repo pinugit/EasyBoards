@@ -1,7 +1,11 @@
-import React from "react";
+import "./TopBar.css";
 
 const TopBar = () => {
-  return <div>TopBar</div>;
+  return (
+    <div className="nevbar">
+      <div className="logo">EasyBoards</div>
+    </div>
+  );
 };
 
 export default TopBar;

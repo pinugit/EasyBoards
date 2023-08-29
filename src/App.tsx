@@ -1,11 +1,14 @@
-import { useState } from "react";
 import "./App.css";
 import Canvas from "./Components/Canvas/Canvas";
+import TopBar from "./Components/Topbar/TopBar";
 
 function App() {
   return (
     <>
-      <Canvas />
+      <TopBar />
+      <div className="main-area">
+        <Canvas />
+      </div>
     </>
   );
 }
