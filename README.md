@@ -1,27 +1,45 @@
-# React + TypeScript + Vite
+# EasyBoards is a project manager app made in React with Tauri framework 🔥
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Introducing EasyBoards: Your go-to project manager powered by the dynamic duo of React and Tauri. Streamline tasks, collaborate seamlessly, and bring organization to a whole new level. Join us on this journey of efficient project management and let your productivity thrive! 🚀🔗
 
-Currently, two official plugins are available:
+## what is working as of now
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- You can create boards and cards (and it has sweet-sweet animation)
+- Design language is determined (and i am proud of it )
+- Added tauri and its dependencies and the windows app is opening perfectly
+- thats it
 
-## Expanding the ESLint configuration
+## What i am working on
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- get the app to the beta release state
+- Storing the data locally (will use json or if it is easy to implement sqlLite)
+- Adding markdown engine to the cards
 
-- Configure the top-level `parserOptions` property like this:
+## If you want to run locally
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+1. Install tauri (https://tauri.app/v1/guides/getting-started/prerequisites) and nodejs(https://nodejs.org/en/download)
+
+2. clone this repo and run :
+
+```bash
+npm i
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3.  now run :
+
+```bash
+npm run tauri app
+```
+
+this will launch the dev server and open the window
+
+4.  congrats it is running!!🙌🔥
+
+## Cradits
+
+- me(obviously)
+- anyone who want to contribute
+
+## thanks for reading
+
+![cute dog](https://media0.giphy.com/media/xULW8v7LtZrgcaGvC0/giphy.gif?cid=ecf05e47dk6eiwbehb270bgict3x40b3sdgds46gbfo0ts9d&ep=v1_gifs_search&rid=giphy.gif&ct=g)
