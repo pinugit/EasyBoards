@@ -1,2 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Kanit&family=Ubuntu:wght@300&display=swap");
 
+/* Hide the scrollbar but enable scrolling */
+* {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* Hide the scrollbar but enable scrolling (Webkit) */
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

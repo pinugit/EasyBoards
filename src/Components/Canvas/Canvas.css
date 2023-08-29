@@ -3,6 +3,8 @@
   width: 100vw;
   height: 100vh;
   overflow: auto; /* Add overflow property to enable scrolling if necessary */
+  padding-top: 4rem;
+  box-sizing: border-box;
 }
 
 .canvas-background {

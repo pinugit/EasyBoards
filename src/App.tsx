@@ -6,9 +6,7 @@ function App() {
   return (
     <>
       <TopBar />
-      <div className="main-area">
-        <Canvas />
-      </div>
+      <Canvas />
     </>
   );
 }
