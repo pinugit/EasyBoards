@@ -3,9 +3,27 @@
   width: 100vw;
   height: 4rem;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 
   background: #001d2021;
   backdrop-filter: blur(10px);
+}
+
+.logo {
+  background: #181a18;
+  color: #fabd2f;
+
+  padding: 0.9rem;
+  margin: 1rem;
+
+  border-radius: 12px;
+
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bolder;
+  font-size: larger;
 }
