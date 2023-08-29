@@ -12,15 +12,18 @@ const BoardAdder = ({ onBoardAdding }: props) => {
   };
 
   return (
-    <motion.div
-      layout
-      initial={{ scale: "70%", opacity: "30%" }}
-      animate={{ scale: "100%", opacity: "100%" }}
-      onClick={handleBoardAdding}
-      className="container"
-    >
-      <SiAddthis className="icon" />
-    </motion.div>
+    <div className="shell">
+      <motion.div
+        layout
+        initial={{ scale: "70%", opacity: "30%" }}
+        animate={{ scale: "100%", opacity: "100%" }}
+        whileHover={{ scale: "1.05" }}
+        onClick={handleBoardAdding}
+        className="container"
+      >
+        <SiAddthis className="icon" />
+      </motion.div>
+    </div>
   );
 };
 

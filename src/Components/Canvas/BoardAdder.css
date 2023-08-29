@@ -4,13 +4,11 @@
   align-items: center;
 
   height: 2rem;
-  width: 20rem;
-  min-width: 15rem;
+  width: 12rem;
+  min-width: 10rem;
 
   color: antiquewhite;
-  background: #3c3836;
-
-  margin-top: 1em;
+  background: #181a18;
 
   border-radius: 12px;
   border: #458588 2px solid;
@@ -24,4 +22,18 @@
 }
 .icon:hover {
   background: #458588;
+}
+
+.shell {
+  background: #001d2021;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  height: 100%;
+
+  backdrop-filter: blur(10px);
+
+  box-sizing: border-box;
 }

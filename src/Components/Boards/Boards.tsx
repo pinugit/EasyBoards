@@ -17,31 +17,6 @@ const Boards = () => {
   const [isDragging, setDragging] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    const boardElement = document.getElementById("board");
-    const replacerBoard = document.getElementById("rp");
-
-    if (boardElement && replacerBoard) {
-      const boardRect = boardElement.getBoundingClientRect();
-
-      replacerBoard.style.position = "absolute";
-      boardElement.style.position = "absolute";
-      boardElement.style.zIndex = "200";
-      replacerBoard.style.height = `${boardRect.height}px`;
-      console.log(boardRect.height);
-    }
-    return () => {
-      const boardElement = document.getElementById("board");
-      const replacerBoard = document.getElementById("rp");
-
-      if (boardElement && replacerBoard) {
-        boardElement.style.position = ""; // Reset the position
-        boardElement.style.zIndex = ""; // Reset the z-index
-        replacerBoard.style.height = ""; // Reset the height
-        console.log("triggering the if block");
-      }
-    };
-  }, [isDragging]);
 
   useEffect(() => {
     if (inputRef.current) {
