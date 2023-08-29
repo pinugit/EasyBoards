@@ -1,5 +1,5 @@
 import { SiAddthis } from "react-icons/si";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import "./BoardAdder.css";
 
 interface props {
@@ -14,10 +14,8 @@ const BoardAdder = ({ onBoardAdding }: props) => {
   return (
     <motion.div
       layout
-      transition={{
-        duration: 0.1,
-      }}
-      whileHover={{ scale: 1.2 }}
+      initial={{ scale: "70%", opacity: "30%" }}
+      animate={{ scale: "100%", opacity: "100%" }}
       onClick={handleBoardAdding}
       className="container"
     >
