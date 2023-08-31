@@ -84,3 +84,9 @@
 
   box-sizing: border-box;
 }
+
+.dragging {
+  position: relative;
+
+  z-index: 999;
+}

@@ -56,7 +56,7 @@ const Boards = () => {
         initial={{ scaleY: "50%", opacity: "10%" }}
         animate={{ scaleY: "100%", opacity: "100%" }}
         transition={{ ease: "easeOut", duration: 0.2 }}
-        className="rows"
+        className={`rows ${isDragging ? "dragging " : ""}`}
       >
         {isDragging ? <div id="rp" className="board-replacer"></div> : null}
         <motion.div
