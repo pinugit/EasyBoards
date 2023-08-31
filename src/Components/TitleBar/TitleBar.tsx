@@ -1,9 +1,15 @@
 import "./TitleBar.css";
 
-const TitleBar = () => {
+interface props {
+  canvasTitle: string;
+}
+
+const TitleBar = ({ canvasTitle }: props) => {
   return (
     <div className="title-bar-container">
-      <div className="title-bar"></div>
+      <div className="title-bar">
+        <p className="title">{canvasTitle}</p>
+      </div>
     </div>
   );
 };

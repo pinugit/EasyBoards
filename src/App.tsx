@@ -5,7 +5,7 @@ import TitleBar from "./Components/TitleBar/TitleBar";
 function App() {
   return (
     <>
-      <TitleBar />
+      <TitleBar canvasTitle="First canvas" />
       <Canvas />
     </>
   );
