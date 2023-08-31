@@ -1,11 +1,11 @@
 import "./App.css";
 import Canvas from "./Components/Canvas/Canvas";
-import TopBar from "./Components/Topbar/TopBar";
+import TitleBar from "./Components/TitleBar/TitleBar";
 
 function App() {
   return (
     <>
-      <TopBar />
+      <TitleBar />
       <Canvas />
     </>
   );
