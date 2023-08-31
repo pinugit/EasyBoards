@@ -1,11 +1,19 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, RefObject, useEffect, useState } from "react";
 import Boards from "../Boards/Boards";
 import BoardAdder from "./BoardAdder";
 import "./Canvas.css";
+import React from "react";
 
 const Canvas = () => {
   const [boards, setBoards] = useState<ReactElement[]>([]);
   const [isBoardAdderVisible, setIsBoardAdderVisible] = useState(true);
+  const [isBoardDragging, setisBoardDragging] = useState(false);
+  const [boardCoordinates, setBoardCoordinates] = useState<
+    {
+      xCenter: number;
+    }[]
+  >([]);
+  const [boardRefs, setBoardRefs] = useState<RefObject<HTMLDivElement>[]>([]);
 
   const handleBoardAdding = () => {
     setIsBoardAdderVisible(false);
@@ -13,8 +21,41 @@ const Canvas = () => {
     setTimeout(() => {
       setIsBoardAdderVisible(true);
     }, 50);
-    setBoards((prev) => [...prev, <Boards key={boards.length} />]);
+    const newBoardRef = React.createRef<HTMLDivElement>();
+
+    setBoards((prev) => [
+      ...prev,
+      <Boards
+        key={boards.length}
+        boardRef={newBoardRef}
+        BoardsCoordinate={boardCoordinates}
+        isABoardDragging={(isDragging) => {
+          setisBoardDragging(isDragging);
+        }}
+      />,
+    ]);
+
+    // Add the new ref to the boardRefs array
+    setBoardRefs((prev) => [...prev, newBoardRef]);
   };
+
+  useEffect(() => {
+    const newBoardCoordinates = boardRefs.map((boardRef) => {
+      if (boardRef.current) {
+        const rect = boardRef.current.getBoundingClientRect();
+        return {
+          xCenter: rect.left + rect.width / 2,
+        };
+      }
+      return {
+        xCenter: 0,
+      };
+    });
+    if (isBoardDragging) {
+      setBoardCoordinates(newBoardCoordinates);
+      console.log(newBoardCoordinates);
+    }
+  }, [isBoardDragging]);
 
   return (
     <div id="Canvas">
