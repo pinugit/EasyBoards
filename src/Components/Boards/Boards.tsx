@@ -22,6 +22,7 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
   const [headingValue, setHeadingValue] = useState("");
   const [cards, setCards] = useState<ReactElement[]>([]);
   const [isDragging, setDragging] = useState(false);
+  const [flexOrder, setFlexOrder] = useState<number>();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -63,12 +64,14 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
       // Check if the dragging card is to the left of the first card
       if (xPosition < BoardsCoordinate[0].xCenter) {
         console.log("Dragging card is to the left of the first card");
+        setFlexOrder(-1);
         return;
       }
 
       // Check if the dragging card is to the right of the last card
       if (xPosition > BoardsCoordinate[BoardsCoordinate.length - 1].xCenter) {
         console.log("Dragging card is to the right of the last card");
+        setFlexOrder(BoardsCoordinate.length - 1);
         return;
       }
 
@@ -87,6 +90,7 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
           "and",
           cardIndex + 1
         );
+        setFlexOrder(cardIndex);
       }
     }
   };
@@ -108,6 +112,7 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
         animate={{ scaleY: "100%", opacity: "100%" }}
         transition={{ ease: "easeOut", duration: 0.2 }}
         className={`rows ${isDragging ? "dragging " : ""}`}
+        style={{ order: flexOrder }}
       >
         {isDragging ? <div id="rp" className="board-replacer"></div> : null}
         <motion.div
