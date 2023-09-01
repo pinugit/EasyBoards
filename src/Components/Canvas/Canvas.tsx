@@ -3,6 +3,7 @@ import Boards from "../Boards/Boards";
 import BoardAdder from "./BoardAdder";
 import "./Canvas.css";
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const Canvas = () => {
   const [boards, setBoards] = useState<ReactElement[]>([]);
@@ -14,6 +15,9 @@ const Canvas = () => {
     }[]
   >([]);
   const [boardRefs, setBoardRefs] = useState<RefObject<HTMLDivElement>[]>([]);
+
+  const { d } = useParams();
+  console.log("from canvas", d);
 
   const handleBoardAdding = () => {
     setIsBoardAdderVisible(false);
