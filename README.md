@@ -7,12 +7,15 @@ Introducing EasyBoards: Your go-to project manager powered by the dynamic duo of
 - You can create boards and cards (and it has sweet-sweet animation)
 - Design language is determined (and i am proud of it )
 - Added tauri and its dependencies and the windows app is opening perfectly
+- Dragging and Dropping of the Boards is working properly(thanks to the dnd-kit package)
+- When inside of a canvas the name of canvas is showing at the taskbar
+- the routing structure is implimented (using react-router)
 - thats it
 
 ## What i am working on
 
 - get the app to the beta release state
-- Storing the data locally (will use json or if it is easy to implement sqlLite)
+- Storing the data locally (will use json)
 - Adding markdown engine to the cards
 
 ## If you want to run locally
