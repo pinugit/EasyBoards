@@ -3,10 +3,20 @@ import Boards from "../Boards/Boards";
 import BoardAdder from "./BoardAdder";
 import "./Canvas.css";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  horizontalListSortingStrategy,
+} from "@dnd-kit/sortable";
+
+interface Boards {
+  id: string;
+  content: ReactElement;
+}
 
 const Canvas = () => {
-  const [boards, setBoards] = useState<ReactElement[]>([]);
+  const [theBoards, setTheBoards] = useState<Boards[]>([]);
   const [isBoardAdderVisible, setIsBoardAdderVisible] = useState(true);
 
   const handleBoardAdding = () => {
@@ -17,21 +27,38 @@ const Canvas = () => {
     }, 50);
     const newBoardRef = React.createRef<HTMLDivElement>();
 
-    setBoards((prev) => [
+    setTheBoards((prev) => [
       ...prev,
-      <Boards key={boards.length} boardRef={newBoardRef} />,
+      {
+        id: `Board${theBoards.length}`,
+        content: (
+          <Boards key={theBoards.length} Boards={`Board${theBoards.length}`} />
+        ),
+      },
     ]);
+  };
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    console.log("dragging is ended!!");
   };
 
   return (
     <div id="Canvas">
       <div className="canvas-background"></div>
-      <div className="content-container">
-        {boards.map((board) => board)}
-        {isBoardAdderVisible && (
-          <BoardAdder onBoardAdding={() => handleBoardAdding()} />
-        )}
-      </div>
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <div className="content-container">
+          <SortableContext
+            items={theBoards}
+            strategy={horizontalListSortingStrategy}
+          >
+            {theBoards.map((board) => board.content)}
+          </SortableContext>
+
+          {isBoardAdderVisible && (
+            <BoardAdder onBoardAdding={() => handleBoardAdding()} />
+          )}
+        </div>
+      </DndContext>
     </div>
   );
 };

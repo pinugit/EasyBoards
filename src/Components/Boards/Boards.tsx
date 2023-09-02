@@ -4,23 +4,30 @@ import React, {
   useEffect,
   useRef,
   ReactElement,
-  RefObject,
 } from "react";
 import Cards from "../Cards/Cards";
 import "./Boards.css";
 import CardAdder from "./CardAdder";
 import { motion } from "framer-motion";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface props {
-  boardRef: RefObject<HTMLDivElement>;
+  Boards: string;
 }
-
-const Boards = ({ boardRef }: props) => {
+const Boards = ({ Boards }: props) => {
   const [isEditingHeading, setEditingHeading] = useState(true);
   const [headingValue, setHeadingValue] = useState("");
   const [cards, setCards] = useState<ReactElement[]>([]);
   const [isDragging, setDragging] = useState(false);
 
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: Boards });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleHeadingChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +80,10 @@ const Boards = ({ boardRef }: props) => {
       >
         {isDragging ? <div id="rp" className="board-replacer"></div> : null}
         <motion.div
-          ref={boardRef}
+          ref={setNodeRef}
+          style={style}
+          {...attributes}
+          {...listeners}
           drag
           whileDrag={{
             scale: 1.1,
