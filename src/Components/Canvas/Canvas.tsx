@@ -39,7 +39,22 @@ const Canvas = () => {
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
-    console.log("dragging is ended!!");
+    const { active, over } = event;
+
+    console.log(active.id, over?.id);
+
+    if ((active.id, over?.id)) {
+      setTheBoards((items) => {
+        const activeIndex = items.findIndex((board) => board.id === active.id);
+        const overIndex = items.findIndex((board) => board.id === over.id);
+
+        if (activeIndex !== -1 && overIndex !== -1) {
+          return arrayMove(items, activeIndex, overIndex);
+        }
+
+        return items;
+      });
+    }
   };
 
   return (
