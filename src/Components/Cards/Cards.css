@@ -12,3 +12,14 @@
 
   background: #282828;
 }
+
+.open {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+
+  width: 10rem;
+  height: 10rem;
+
+  background-color: antiquewhite;
+}

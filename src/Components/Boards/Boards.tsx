@@ -22,7 +22,6 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
   const [headingValue, setHeadingValue] = useState("");
   const [cards, setCards] = useState<ReactElement[]>([]);
   const [isDragging, setDragging] = useState(false);
-  const [flexOrder, setFlexOrder] = useState<number>();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -58,43 +57,6 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
     isABoardDragging(false);
   };
 
-  const handleDragSnapping = (info: PanInfo) => {
-    const xPosition = info.point.x;
-    if (BoardsCoordinate.length != 0) {
-      // Check if the dragging card is to the left of the first card
-      if (xPosition < BoardsCoordinate[0].xCenter) {
-        console.log("Dragging card is to the left of the first card");
-        setFlexOrder(-1);
-        return;
-      }
-
-      // Check if the dragging card is to the right of the last card
-      if (xPosition > BoardsCoordinate[BoardsCoordinate.length - 1].xCenter) {
-        console.log("Dragging card is to the right of the last card");
-        setFlexOrder(BoardsCoordinate.length - 1);
-        return;
-      }
-
-      // Find the index of the card based on the xPosition
-      const cardIndex = BoardsCoordinate.findIndex(
-        (coordinate, index) =>
-          xPosition >= coordinate.xCenter &&
-          (index === BoardsCoordinate.length - 1 ||
-            xPosition < BoardsCoordinate[index + 1].xCenter)
-      );
-
-      if (cardIndex !== -1) {
-        console.log(
-          "Dragging card is between cards:",
-          cardIndex,
-          "and",
-          cardIndex + 1
-        );
-        setFlexOrder(cardIndex);
-      }
-    }
-  };
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.select();
@@ -112,7 +74,6 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
         animate={{ scaleY: "100%", opacity: "100%" }}
         transition={{ ease: "easeOut", duration: 0.2 }}
         className={`rows ${isDragging ? "dragging " : ""}`}
-        style={{ order: flexOrder }}
       >
         {isDragging ? <div id="rp" className="board-replacer"></div> : null}
         <motion.div
@@ -122,7 +83,6 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
             scale: 1.1,
             rotate: -10,
           }}
-          onDrag={(event, info) => handleDragSnapping(info)}
           onDragStart={handleDraggingStart}
           onDragEnd={handleDraggingEnd}
           dragSnapToOrigin={true}

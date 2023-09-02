@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./TitleBar.css";
-import { BsFillCaretLeftFill } from "react-icons/bs";
+import { IoIosArrowBack } from "react-icons/io";
 
 const TitleBar = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const TitleBar = () => {
     <div className="title-bar-container">
       <div className="title-bar">
         <div onClick={handleGoHome} className="logo">
-          <BsFillCaretLeftFill />
+          <IoIosArrowBack />
         </div>
         <p className="title">{name}</p>
         <div></div>
