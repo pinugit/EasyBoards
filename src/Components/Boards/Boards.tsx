@@ -9,15 +9,13 @@ import React, {
 import Cards from "../Cards/Cards";
 import "./Boards.css";
 import CardAdder from "./CardAdder";
-import { PanInfo, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface props {
   boardRef: RefObject<HTMLDivElement>;
-  isABoardDragging: (isDragging: boolean) => void;
-  BoardsCoordinate: { xCenter: number }[];
 }
 
-const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
+const Boards = ({ boardRef }: props) => {
   const [isEditingHeading, setEditingHeading] = useState(true);
   const [headingValue, setHeadingValue] = useState("");
   const [cards, setCards] = useState<ReactElement[]>([]);
@@ -49,12 +47,10 @@ const Boards = ({ boardRef, isABoardDragging, BoardsCoordinate }: props) => {
 
   const handleDraggingStart = () => {
     setDragging(true);
-    isABoardDragging(true);
   };
 
   const handleDraggingEnd = () => {
     setDragging(false);
-    isABoardDragging(false);
   };
 
   useEffect(() => {
