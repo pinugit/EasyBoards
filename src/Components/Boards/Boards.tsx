@@ -9,20 +9,36 @@ import Cards from "../Cards/Cards";
 import "./Boards.css";
 import CardAdder from "./CardAdder";
 import { motion } from "framer-motion";
-import { useSortable } from "@dnd-kit/sortable";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
+import { useSensor, PointerSensor } from "@dnd-kit/core";
 
+const delayConstraint = {
+  delay: 500, // Adjust the delay value as needed (e.g., 500ms)
+  tolerance: 5, // Adjust the tolerance value as needed (e.g., 5 pixels)
+};
+
+interface cardsInterface {
+  id: string;
+  content: ReactElement;
+}
 interface props {
   Boards: string;
 }
 const Boards = ({ Boards }: props) => {
   const [isEditingHeading, setEditingHeading] = useState(true);
   const [headingValue, setHeadingValue] = useState("");
-  const [cards, setCards] = useState<ReactElement[]>([]);
+  const [cards, setCards] = useState<cardsInterface[]>([]);
   const [isDragging, setDragging] = useState(false);
 
-  const { attributes, listeners, setNodeRef } = useSortable({ id: Boards });
+  const { attributes, listeners, setNodeRef } = useSortable({
+    id: Boards,
+  });
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const sensor = useSensor(PointerSensor, {
+    activationConstraint: delayConstraint,
+  });
 
   const handleHeadingChange = (event: ChangeEvent<HTMLInputElement>) => {
     setHeadingValue(event.target.value);
@@ -43,7 +59,12 @@ const Boards = ({ Boards }: props) => {
   };
 
   const handleAddingCard = () => {
-    setCards((prev) => [...prev, <Cards key={Cards.length} />]);
+    setCards((prev) => [
+      ...prev,
+      { id: `card-${cards.length}`, content: <Cards key={Cards.length} /> },
+    ]);
+    console.log("card added ");
+    console.log(Cards);
   };
 
   const handleDraggingStart = () => {
@@ -77,6 +98,7 @@ const Boards = ({ Boards }: props) => {
           ref={setNodeRef}
           {...attributes}
           {...listeners}
+          sensors
           drag
           whileDrag={{
             scale: 1.1,
@@ -110,8 +132,10 @@ const Boards = ({ Boards }: props) => {
               </h1>
             )}
           </div>
-          <div className="card-area">{cards.map((card) => card)}</div>
-          <CardAdder onAddingCard={handleAddingCard} />
+          <SortableContext items={cards}>
+            <div className="card-area">{cards.map((card) => card.content)}</div>
+            <CardAdder onAddingCard={handleAddingCard} />
+          </SortableContext>
         </motion.div>
       </motion.div>
     </>

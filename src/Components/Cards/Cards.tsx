@@ -12,10 +12,14 @@ const Cards = () => {
   return (
     <div className="cards-container">
       <div className={`cards ${isOpen ? "open" : ""}`} onClick={toggleCard}>
-        <motion.h1 layout>{isOpen ? "Close" : "Open"}</motion.h1>
+        <motion.h1 layout layoutId="ec">
+          {isOpen ? "Close" : "Open"}
+        </motion.h1>
+
         <AnimatePresence>
           {isOpen && (
             <motion.p
+              layoutId="ec"
               layout
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
