@@ -2,7 +2,6 @@ import { ReactElement, useState } from "react";
 import Boards from "../Boards/Boards";
 import BoardAdder from "./BoardAdder";
 import "./Canvas.css";
-import React from "react";
 import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -25,7 +24,6 @@ const Canvas = () => {
     setTimeout(() => {
       setIsBoardAdderVisible(true);
     }, 50);
-    const newBoardRef = React.createRef<HTMLDivElement>();
 
     setTheBoards((prev) => [
       ...prev,
