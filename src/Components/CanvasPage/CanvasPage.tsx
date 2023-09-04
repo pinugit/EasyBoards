@@ -4,7 +4,7 @@ import TitleBar from "../TitleBar/TitleBar";
 const CanvasPage = () => {
   return (
     <>
-      <TitleBar canvasTitle="hello" />
+      <TitleBar />
       <Canvas />
     </>
   );

@@ -1,0 +1,8 @@
+.canvas-cards {
+  height: 10rem;
+  width: 20rem;
+
+  background: green;
+
+  border-radius: 5px;
+}
