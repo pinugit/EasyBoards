@@ -98,7 +98,7 @@ const Boards = ({ Boards }: props) => {
           ref={setNodeRef}
           {...attributes}
           {...listeners}
-          sensors
+          // sensors
           drag
           whileDrag={{
             scale: 1.1,
