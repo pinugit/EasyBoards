@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./HomePage.css";
 import { ListAllCanvasFolders } from "../../Services/ListAllCanvasFolders";
 import CanvasCards from "../CanvasCards/CanvasCards";
-import CanvasAdderModal from "../AddCanvas/CanvasAdderModal";
+import Backdrop from "../AddCanvas/backdrop";
 
 const HomePage = () => {
   const [canvas, setCanvas] = useState<(string | undefined)[] | undefined>();
@@ -29,7 +29,7 @@ const HomePage = () => {
         {canvas?.map((aCanvas, index) => (
           <CanvasCards key={index} name={aCanvas} image="" />
         ))}
-        <CanvasAdderModal />
+        <Backdrop />
       </div>
     </div>
   );
