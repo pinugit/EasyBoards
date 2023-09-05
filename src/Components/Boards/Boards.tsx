@@ -10,12 +10,6 @@ import "./Boards.css";
 import CardAdder from "./CardAdder";
 import { motion } from "framer-motion";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
-import { useSensor, PointerSensor } from "@dnd-kit/core";
-
-const delayConstraint = {
-  delay: 500, // Adjust the delay value as needed (e.g., 500ms)
-  tolerance: 5, // Adjust the tolerance value as needed (e.g., 5 pixels)
-};
 
 interface cardsInterface {
   id: string;
@@ -35,10 +29,6 @@ const Boards = ({ Boards }: props) => {
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const sensor = useSensor(PointerSensor, {
-    activationConstraint: delayConstraint,
-  });
 
   const handleHeadingChange = (event: ChangeEvent<HTMLInputElement>) => {
     setHeadingValue(event.target.value);
