@@ -13,15 +13,16 @@ const Backdrop = () => {
   return (
     <>
       {isModalOpen && (
-        <motion.div
-          initial={{ opacity: "0" }}
-          animate={{ opacity: "50%" }}
-          transition={{ duration: 1 }}
-          onClick={handleButtonCLick}
-          className="backdrop"
-        >
+        <>
+          <motion.div
+            initial={{ opacity: "0" }}
+            animate={{ opacity: "50%" }}
+            transition={{ duration: 1 }}
+            onClick={handleButtonCLick}
+            className="backdrop"
+          ></motion.div>
           <CanvasAdderModal />
-        </motion.div>
+        </>
       )}
       <AddCanvas onButtonCLick={handleButtonCLick} />
     </>
