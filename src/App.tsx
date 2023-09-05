@@ -1,7 +1,7 @@
 import "./App.css";
 import CanvasPage from "./Components/CanvasPage/CanvasPage";
 import { Route, Routes } from "react-router-dom";
-import { checkFolderExistence } from "./File IO functions/CheckForAppFolder";
+import { checkFolderExistence } from "./Services/CheckForAppFolder";
 import { useEffect } from "react";
 import HomePage from "./Components/HomePage/HomePage";
 
