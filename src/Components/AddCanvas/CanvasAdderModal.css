@@ -1,5 +1,9 @@
-.modal-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.modal {
+  position: fixed;
+  z-index: 200;
+
+  height: 500px;
+  width: 500px;
+
+  background: wheat;
 }
