@@ -1,38 +1,51 @@
-import { useState } from "react";
-import "./Cards.css";
-import { AnimatePresence, motion } from "framer-motion";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-const Cards = () => {
+interface Props {
+  parentElementRef: MutableRefObject<HTMLElement | null>;
+}
+
+const Cards = ({ parentElementRef }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const elementRef = useRef(null);
+  const [theLeftValue, setTheLeftValue] = useState<number>();
 
   const toggleCard = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
-    <div className="cards-container">
-      <div className={`cards ${isOpen ? "open" : ""}`} onClick={toggleCard}>
-        <motion.h1 layout layoutId="ec">
-          {isOpen ? "Close" : "Open"}
-        </motion.h1>
+  useEffect(() => {
+    if (parentElementRef.current) {
+      const parentRect = parentElementRef.current.getBoundingClientRect();
+      const leftValue = parentRect.left + window.scrollX;
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.p
-              layoutId="ec"
-              layout
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-              explicabo magnam veritatis eum culpa voluptas cum, porro earum
-              accusamus quod!s
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
+      console.log(`Left value of parent: ${leftValue}px`);
+      setTheLeftValue(leftValue);
+    }
+  }, [isOpen, parentElementRef]);
+
+  const variants = {
+    active: {
+      y: window.innerHeight / 3 - 300,
+      x: window.innerWidth / 2 - theLeftValue! - 500,
+      width: 1000,
+      height: 600,
+      position: "fixed",
+    },
+    inactive: {},
+  };
+
+  return (
+    <motion.div
+      style={{ background: "red" }}
+      ref={elementRef}
+      variants={variants}
+      initial={!isOpen ? "inactive" : "active"}
+      animate={isOpen ? "active" : "inactive"}
+      onClick={toggleCard}
+    >
+      <motion.h1>{isOpen ? "open" : "close"}</motion.h1>
+    </motion.div>
   );
 };
 

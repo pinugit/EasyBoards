@@ -24,6 +24,8 @@ const Boards = ({ Boards }: props) => {
   const [cards, setCards] = useState<cardsInterface[]>([]);
   const [isDragging, setDragging] = useState(false);
 
+  const currentBoardRef = useRef(null);
+
   const { attributes, listeners, setNodeRef } = useSortable({
     id: Boards,
   });
@@ -51,7 +53,12 @@ const Boards = ({ Boards }: props) => {
   const handleAddingCard = () => {
     setCards((prev) => [
       ...prev,
-      { id: `card-${cards.length}`, content: <Cards key={Cards.length} /> },
+      {
+        id: `card-${cards.length}`,
+        content: (
+          <Cards key={Cards.length} parentElementRef={currentBoardRef} />
+        ),
+      },
     ]);
     console.log("card added ");
     console.log(Cards);
@@ -123,7 +130,9 @@ const Boards = ({ Boards }: props) => {
             )}
           </div>
           <SortableContext items={cards}>
-            <div className="card-area">{cards.map((card) => card.content)}</div>
+            <div ref={currentBoardRef} className="card-area">
+              {cards.map((card) => card.content)}
+            </div>
             <CardAdder onAddingCard={handleAddingCard} />
           </SortableContext>
         </motion.div>

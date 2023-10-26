@@ -1,6 +1,8 @@
 .cards {
   max-width: auto;
-  max-height: auto;
+  max-height: 6rem;
+
+  box-sizing: border-box;
 
   border-radius: 10px;
 
@@ -11,10 +13,11 @@
   font-family: "JetBrains Mono", monospace;
 
   background: #282828;
+  position: fixed;
 }
 
 .open {
-  position: absolute;
+  position: fixed;
   top: 200px;
   left: 200px;
 

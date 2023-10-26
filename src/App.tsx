@@ -13,8 +13,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* <Route path="/" element={<CanvasPage />} /> */}
+        {/* <Route path="/" element={<HomePage />} /> */}
+        <Route path="/" element={<CanvasPage />} />
         <Route path="canvas/:name/" element={<CanvasPage />} />
       </Routes>
     </>
