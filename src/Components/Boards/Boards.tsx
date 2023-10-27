@@ -23,6 +23,7 @@ const Boards = ({ Boards }: props) => {
   const [headingValue, setHeadingValue] = useState("");
   const [cards, setCards] = useState<cardsInterface[]>([]);
   const [isDragging, setDragging] = useState(false);
+  const [isCardOpen, setIsCardOpen] = useState(false);
 
   const currentBoardRef = useRef(null);
 
@@ -56,7 +57,11 @@ const Boards = ({ Boards }: props) => {
       {
         id: `card-${cards.length}`,
         content: (
-          <Cards key={Cards.length} parentElementRef={currentBoardRef} />
+          <Cards
+            key={Cards.length}
+            parentElementRef={currentBoardRef}
+            onCardOpen={(isOpen) => setIsCardOpen(isOpen)}
+          />
         ),
       },
     ]);
@@ -88,7 +93,7 @@ const Boards = ({ Boards }: props) => {
         initial={{ scaleY: "50%", opacity: "10%" }}
         animate={{ scaleY: "100%", opacity: "100%" }}
         transition={{ ease: "easeOut", duration: 0.2 }}
-        className={`rows ${isDragging ? "dragging " : ""}`}
+        className={`rows ${isDragging || isCardOpen ? "dragging " : ""}`}
       >
         {isDragging ? <div id="rp" className="board-replacer"></div> : null}
         <motion.div
